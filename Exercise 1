@@ -1,0 +1,29 @@
+using System;
+
+struct Time
+{
+    private readonly int minutes;
+
+    public Time(int hour, int minute)
+    {
+        this.minutes = hour * 60 + minute;
+    }
+
+    public override string ToString()
+    {
+        int hh = minutes / 60;
+        int mm = minutes % 60;
+        return $"{hh:D2}:{mm:D2}";
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Time t1 = new Time(2, 15);
+        Time t2 = new Time(0, 45);
+        Console.WriteLine("Time 1: " + t1);
+        Console.WriteLine("Time 2: " + t2);
+    }
+}
