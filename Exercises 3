@@ -1,0 +1,50 @@
+using System;
+
+struct Time
+{
+    private int minutes;
+
+    public Time(int minutes)
+    {
+        this.minutes = minutes;
+    }
+
+    public Time(int hour, int minute)
+    {
+        this.minutes = hour * 60 + minute;
+    }
+
+    public int Hour => minutes / 60;
+    public int Minute => minutes % 60;
+
+    public override string ToString()
+    {
+        return $"{Hour:D2}:{Minute:D2}";
+    }
+
+    public static Time operator +(Time t1, Time t2)
+    {
+        return new Time(t1.minutes + t2.minutes);
+    }
+
+    public static Time operator -(Time t1, Time t2)
+    {
+        return new Time(t1.minutes - t2.minutes);
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Time t1 = new Time(2, 15);
+        Time t2 = new Time(0, 45);
+        Time sum = t1 + t2;
+        Time diff = t1 - t2;
+
+        Console.WriteLine("Time 1: " + t1);
+        Console.WriteLine("Time 2: " + t2);
+        Console.WriteLine("Sum: " + sum);
+        Console.WriteLine("Difference: " + diff);
+    }
+}
