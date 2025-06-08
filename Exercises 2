@@ -1,0 +1,30 @@
+using System;
+
+struct Time
+{
+    private int minutes;
+
+    public Time(int hour, int minute)
+    {
+        this.minutes = hour * 60 + minute;
+    }
+
+    public int Hour => minutes / 60;
+    public int Minute => minutes % 60;
+
+    public override string ToString()
+    {
+        return $"{Hour:D2}:{Minute:D2}";
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Time t = new Time(2, 15);
+        Console.WriteLine("Hour: " + t.Hour);
+        Console.WriteLine("Minute: " + t.Minute);
+        Console.WriteLine("Formatted: " + t);
+    }
+}
